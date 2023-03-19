@@ -9,7 +9,13 @@
 <body>
     
     Mi nombre es: {{ nombre }}<br>
-    y mi apellido es: {{apellido}}
-
-</body>
+    y mi apellido es: {{apellido}}<br>
+    {%for n in notas%}
+        {% if n < 6 %}
+            <p style="color: red">nota: {{n}}</p>
+        {% else %}
+            <p>nota: {{n}}</p>
+        {% endif %}
+    {% endfor %}
+        </body>
 </html>

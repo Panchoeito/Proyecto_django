@@ -21,7 +21,8 @@ def probando_template(request):
     plantilla = Template(mihtml.read())
     mihtml.close()
     
-    mis_datos = {"nombre":"Esteban", "apellido":"Acevedo"}
+    notas = [10, 9, 8, 4]
+    mis_datos = {"nombre":"Esteban", "apellido":"Acevedo", "notas": notas}
     
     mi_contexto = Context(mis_datos)
     
