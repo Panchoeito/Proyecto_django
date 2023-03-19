@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from datetime import datetime as dt
-from django.template import Template, Context
+from django.template import Template, Context, loader
 
 def saludo (request):   
     return HttpResponse("Hola comisión")
@@ -17,15 +17,19 @@ def mostrar_nombre(request,nombre):
     return HttpResponse(f"{texto} {nombre}")
 
 def probando_template(request):
-    mihtml = open("./plantillas/template1.html")
-    plantilla = Template(mihtml.read())
-    mihtml.close()
-    
+
     notas = [10, 9, 8, 4]
     mis_datos = {"nombre":"Esteban", "apellido":"Acevedo", "notas": notas}
+
+#    mihtml = open("./plantillas/template1.html")
+#    plantilla = Template(mihtml.read())
+#    mihtml.close()
+
+    plantilla = loader.get_template("template1.html")
     
-    mi_contexto = Context(mis_datos)
+#    mi_contexto = Context(mis_datos)
     
-    documento = plantilla.render(mi_contexto)
-    
+#    documento = plantilla.render(mi_contexto)
+
+    documento = plantilla.render(mis_datos)
     return HttpResponse(documento)
